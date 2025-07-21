@@ -44,8 +44,6 @@ function criarCard(instancia, index) {
 
     const btnExcluir = document.createElement("button");
     btnExcluir.innerText = "Excluir tarefa";
-    btnExcluir.style.backgroundColor = "#e9ecef";
-    btnExcluir.style.color = "#121212";
     btnExcluir.onclick = () => {
         tarefas.splice(index, 1);
         salvarTarefas();
@@ -61,9 +59,6 @@ function criarCard(instancia, index) {
 function exibirMensagem(texto, tempo = 1000) {
     const msg = document.getElementById("mensagem");
     msg.textContent = texto;
-    msg.style.color = "#131313ff";
-    msg.style.backgroundColor = "#ffc9c9"; 
-    msg.style.textAlign = "center";
     setTimeout(() => {
         msg.textContent = "";
     }, tempo);
