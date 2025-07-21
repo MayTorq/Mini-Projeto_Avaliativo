@@ -41,7 +41,18 @@ function criarCard(instancia, index) {
     const paragrafo = document.createElement("p");
     paragrafo.innerText = `${instancia.tarefa}`;
 
+    const btnExcluir = document.createElement("button");
+    btnExcluir.innerText = "Excluir tarefa";
+    btnExcluir.style.backgroundColor = "#e9ecef";
+    btnExcluir.style.color = "#121212";
+    btnExcluir.onclick = () => {
+        tarefas.splice(index, 1);
+        salvarTarefas();
+        renderizarTarefas();
+    };
+
     card.appendChild(paragrafo);
+    card.appendChild(btnExcluir);
     container.appendChild(card);
 }
 
