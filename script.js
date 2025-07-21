@@ -1,6 +1,19 @@
 const form = document.getElementById("formTarefas");
 const container = document.getElementById("cards");
 
+let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+
+function salvarTarefas() {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+}
+
+function renderizarTarefas() {
+    container.innerHTML = "";
+    tarefas.forEach((tarefa, index) => {
+        criarCard(tarefa, index);
+    });
+}
+
 form.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
@@ -9,6 +22,8 @@ form.addEventListener("submit", (evento) => {
     if (nomeTarefa) {
         const novaTarefa = new Tarefa(nomeTarefa);
         tarefas.push(novaTarefa);
+        salvarTarefas();
+        renderizarTarefas();
         form.reset();
     }
 });
@@ -29,3 +44,5 @@ function criarCard(instancia, index) {
     card.appendChild(paragrafo);
     container.appendChild(card);
 }
+
+renderizarTarefas();
